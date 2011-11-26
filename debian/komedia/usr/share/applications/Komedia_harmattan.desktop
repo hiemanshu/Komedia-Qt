@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Name=Komedia
+Exec=/usr/bin/single-instance /opt/Komedia/bin/Komedia
+Icon=/usr/share/icons/hicolor/80x80/apps/Komedia80.png
+X-Window-Icon=
+X-HildonDesk-ShowInToolbar=true
+X-Osso-Type=application/x-executable
