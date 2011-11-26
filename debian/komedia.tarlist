@@ -1,0 +1,36 @@
+# This file is created by MADDE 'dh_fixperms'.
+# MADDE 'dpkg-deb' uses this file when creating
+# 'data.tar.gz' for debian package ar archive.
+755 root root . ./opt /
+755 root root . ./opt/Komedia /
+755 root root . ./opt/Komedia/bin /
+755 root root . ./opt/Komedia/bin/Komedia debian/komedia/opt/Komedia/bin/Komedia
+755 root root . ./opt/Komedia/qml /
+755 root root . ./opt/Komedia/qml/Komedia /
+644 root root . ./opt/Komedia/qml/Komedia/Dilbert.qml debian/komedia/opt/Komedia/qml/Komedia/Dilbert.qml
+644 root root . ./opt/Komedia/qml/Komedia/GOComics.qml debian/komedia/opt/Komedia/qml/Komedia/GOComics.qml
+755 root root . ./opt/Komedia/qml/Komedia/images /
+644 root root . ./opt/Komedia/qml/Komedia/images/calvin.png debian/komedia/opt/Komedia/qml/Komedia/images/calvin.png
+644 root root . ./opt/Komedia/qml/Komedia/images/dilbert.png debian/komedia/opt/Komedia/qml/Komedia/images/dilbert.png
+644 root root . ./opt/Komedia/qml/Komedia/images/garfield.png debian/komedia/opt/Komedia/qml/Komedia/images/garfield.png
+644 root root . ./opt/Komedia/qml/Komedia/images/peanuts.png debian/komedia/opt/Komedia/qml/Komedia/images/peanuts.png
+644 root root . ./opt/Komedia/qml/Komedia/images/wizardofid.png debian/komedia/opt/Komedia/qml/Komedia/images/wizardofid.png
+644 root root . ./opt/Komedia/qml/Komedia/images/xkcd.png debian/komedia/opt/Komedia/qml/Komedia/images/xkcd.png
+644 root root . ./opt/Komedia/qml/Komedia/LoadingFailed.qml debian/komedia/opt/Komedia/qml/Komedia/LoadingFailed.qml
+644 root root . ./opt/Komedia/qml/Komedia/LoadingPage.qml debian/komedia/opt/Komedia/qml/Komedia/LoadingPage.qml
+644 root root . ./opt/Komedia/qml/Komedia/main.qml debian/komedia/opt/Komedia/qml/Komedia/main.qml
+644 root root . ./opt/Komedia/qml/Komedia/MainPage.qml debian/komedia/opt/Komedia/qml/Komedia/MainPage.qml
+644 root root . ./opt/Komedia/qml/Komedia/XKCD.qml debian/komedia/opt/Komedia/qml/Komedia/XKCD.qml
+755 root root . ./usr /
+755 root root . ./usr/share /
+755 root root . ./usr/share/applications /
+644 root root . ./usr/share/applications/Komedia_harmattan.desktop debian/komedia/usr/share/applications/Komedia_harmattan.desktop
+755 root root . ./usr/share/doc /
+755 root root . ./usr/share/doc/komedia /
+644 root root . ./usr/share/doc/komedia/changelog.gz debian/komedia/usr/share/doc/komedia/changelog.gz
+644 root root . ./usr/share/doc/komedia/copyright debian/komedia/usr/share/doc/komedia/copyright
+755 root root . ./usr/share/icons /
+755 root root . ./usr/share/icons/hicolor /
+755 root root . ./usr/share/icons/hicolor/80x80 /
+755 root root . ./usr/share/icons/hicolor/80x80/apps /
+644 root root . ./usr/share/icons/hicolor/80x80/apps/Komedia80.png debian/komedia/usr/share/icons/hicolor/80x80/apps/Komedia80.png
