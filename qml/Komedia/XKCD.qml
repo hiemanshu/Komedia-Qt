@@ -5,7 +5,7 @@ import Komedia 1.0
 Page {
     Xkcd {
         id: xkcd
-        onLoadStarted: appWindow.pageStack.push(loadingPage)
+        onLoadStarting: appWindow.pageStack.push(loadingPage)
     }
 
     tools: ToolBarLayout {

@@ -12,7 +12,7 @@ Xkcd::Xkcd(QObject *parent) :
 {
     page = new QWebView();
     page->setUrl(QUrl("http://xkcd.org"));
-    emit loadStarted();
+    connect(page, SIGNAL(loadStarted()), this, SLOT(emitLoadStarting()));
     connect(page, SIGNAL(loadFinished(bool)), this, SLOT(scrap(bool)));
 }
 
@@ -36,6 +36,7 @@ void Xkcd::scrap(bool error)
     if(error)
     {
         qDebug() << "no error";
+        emit loadComplete();
     }
     else
     {
@@ -48,4 +49,9 @@ QString Xkcd::getAltText()
 {
     qDebug() << "Requesting AltText";
     return QString("I just read a pop-science book by a respected author. One chapter, and much of the thesis, was based around wildly inaccurate data which traced back to ... Wikipedia. To encourage people to be on their toes, I&#39;m not going to say what book or author.");
+}
+
+void Xkcd::emitLoadStarting()
+{
+    emit loadStarting();
 }

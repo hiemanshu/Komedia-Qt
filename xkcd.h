@@ -23,10 +23,11 @@ private:
 signals:
     void loadFailed();
     void loadComplete();
-    void loadStarted();
+    void loadStarting();
 
 public slots:
     void scrap(bool error);
+    void emitLoadStarting();
 
 };
 
