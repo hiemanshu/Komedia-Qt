@@ -24,10 +24,6 @@ PageStackWindow {
         id: goComics
     }
 
-    LoadingPage {
-        id: loadingPage
-    }
-
     LoadingFailed {
         id: loadingFailed
     }

@@ -11,31 +11,65 @@ Xkcd::Xkcd(QObject *parent) :
     QObject(parent)
 {
     page = new QWebView();
-    page->setUrl(QUrl("http://xkcd.org"));
+    comicUrl = "http://imgs.xkcd.com/comics/porn_folder.png";
+    page->setUrl(QUrl("http://xkcd.org/981/"));
+    latestSet = 0;
     connect(page, SIGNAL(loadStarted()), this, SLOT(emitLoadStarting()));
     connect(page, SIGNAL(loadFinished(bool)), this, SLOT(scrap(bool)));
 }
 
 void Xkcd::next()
 {
-    qDebug() << "Next in C++ Class";
+    if(comicId != latest)
+    {
+        comicId += 1;
+        page->setUrl(QVariant(QString("http://xkcd.org/%1/").arg(comicId)).toUrl());
+    }
+    else
+    {
+        qDebug() << "Latest comic!";
+    }
 }
 
 void Xkcd::prev()
 {
-    qDebug() << "Previous in C++ Class";
+    if(comicId != 1)
+    {
+        comicId -= 1;
+        page->setUrl(QVariant(QString("http://xkcd.org/%1/").arg(comicId)).toUrl());
+    }
+    else
+    {
+        qDebug() << "First comic!";
+    }
 }
 
 void Xkcd::random()
 {
     qDebug() << "Random in C++ Class";
+    quint16 randomId = qrand() % ((latest + 1) - 1) + 1;
+    page->setUrl(QString("http://xkcd.org/%1/").arg(randomId));
 }
 
 void Xkcd::scrap(bool error)
 {
     if(error)
     {
-        qDebug() << "no error";
+        QWebElementCollection images = page->page()->mainFrame()->findAllElements("img");
+        QWebElement comicImage = images.at(2);
+        comicUrl = comicImage.attribute("src").toAscii();
+        altText = comicImage.attribute("title");
+        qDebug() << comicUrl;
+        qDebug() << altText;
+        emit comicUrlChanged();
+        if (!latestSet)
+        {
+            latest = page->page()->mainFrame()->findFirstElement("h3").toPlainText().split("/").at(3).toInt();
+            comicId = latest;
+            latestSet = 1;
+            qDebug() << latest;
+            emit enableButtons();
+        }
         emit loadComplete();
     }
     else
@@ -47,11 +81,15 @@ void Xkcd::scrap(bool error)
 
 QString Xkcd::getAltText()
 {
-    qDebug() << "Requesting AltText";
-    return QString("I just read a pop-science book by a respected author. One chapter, and much of the thesis, was based around wildly inaccurate data which traced back to ... Wikipedia. To encourage people to be on their toes, I&#39;m not going to say what book or author.");
+    return altText;
 }
 
 void Xkcd::emitLoadStarting()
 {
     emit loadStarting();
+}
+
+QString Xkcd::getComicUrl()
+{
+    return comicUrl;
 }

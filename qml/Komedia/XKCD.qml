@@ -5,7 +5,11 @@ import Komedia 1.0
 Page {
     Xkcd {
         id: xkcd
-        onLoadStarting: appWindow.pageStack.push(loadingPage)
+        onEnableButtons: {
+            prev.enabled = true
+            next.enabled = true
+            random.enabled = true
+        }
     }
 
     tools: ToolBarLayout {
@@ -23,16 +27,22 @@ Page {
             }
         }
         ToolIcon {
+            id: prev
             platformIconId: "toolbar-previous"
             onClicked: xkcd.prev()
+            enabled: false
         }
         ToolIcon {
+            id: random
             platformIconId: "toolbar-shuffle"
             onClicked: xkcd.random()
+            enabled: false
         }
         ToolIcon {
+            id: next
             platformIconId: "toolbar-next"
             onClicked: xkcd.next()
+            enabled: false
         }
         ToolIcon {
             platformIconId: "toolbar-view-menu"
@@ -91,7 +101,7 @@ Page {
             }
             Image {
                 id: image
-                source: "http://imgs.xkcd.com/comics/citogenesis.png"
+                source: xkcd.comicUrl
                 fillMode: Image.PreserveAspectFit
             }
         }

@@ -6,7 +6,7 @@ Page {
     Xkcd {
         id: xkcd
         onLoadFailed: appWindow.pageStack.push(loadingFailed)
-        onLoadComplete: appWindow.pageStack.push(Xkcd)
+        onLoadComplete: appWindow.pageStack.pop()
     }
 
     BusyIndicator {
